@@ -3,13 +3,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Eye, EyeOff, Mail, Lock } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
-import { Button } from '../../components/UI/button';
-import { Input } from '../../components/UI/input';
-import { Label } from '../../components/UI/label';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/UI/card';
-import { Alert, AlertDescription } from '../../components/UI/alert';
-import GlassCard from '../../components/UI/GlassCard';
-import AnimatedButton from '../../components/UI/AnimatedButton';
+import { Button } from '../../components/ui/button';
+import { Input } from '../../components/ui/input';
+import { Label } from '../../components/ui/label';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
+import { Alert, AlertDescription } from '../../components/ui/alert';
+import GlassCard from '../../components/ui/GlassCard';
+import AnimatedButton from '../../components/ui/AnimatedButton';
 
 const Login = () => {
   const [email, setEmail] = useState('');

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { adminApi, Room } from '@/lib/api';
 import { Plus, Edit, Trash2, Eye, EyeOff } from 'lucide-react';
-import GlassCard from '@/components/UI/GlassCard';
+import GlassCard from '@/components/ui/GlassCard';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import {

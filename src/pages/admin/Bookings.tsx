@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { adminApi, Booking } from '@/lib/api';
 import { Search, Filter, Download, Eye, CheckCircle, XCircle, Clock, ImageIcon } from 'lucide-react';
-import GlassCard from '@/components/UI/GlassCard';
+import GlassCard from '@/components/ui/GlassCard';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';

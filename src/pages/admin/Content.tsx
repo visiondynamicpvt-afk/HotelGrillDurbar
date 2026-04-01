@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { adminApi } from '@/lib/api';
 import { Save, Upload, Image as ImageIcon } from 'lucide-react';
-import GlassCard from '@/components/UI/GlassCard';
+import GlassCard from '@/components/ui/GlassCard';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';

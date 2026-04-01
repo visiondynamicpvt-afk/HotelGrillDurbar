@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { adminApi, Booking } from '@/lib/api';
 import { Calendar, Users, DollarSign, Clock, TrendingUp } from 'lucide-react';
-import GlassCard from '@/components/UI/GlassCard';
+import GlassCard from '@/components/ui/GlassCard';
 import { toast } from 'sonner';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';

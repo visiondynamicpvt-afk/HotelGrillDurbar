@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowDown, MapPin, Star, Calendar, Users } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import AnimatedButton from '@/components/UI/AnimatedButton';
+import AnimatedButton from '@/components/ui/AnimatedButton';
 import building1 from '@/images/Building1.png';
 import building2 from '@/images/Building 2.png';
 import building3 from '@/images/Building 3.png';

@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
 import { Loader2, Lock, User, Shield } from 'lucide-react';
-import GlassCard from '@/components/UI/GlassCard';
+import GlassCard from '@/components/ui/GlassCard';
 import { motion } from 'framer-motion';
 
 const AdminLogin = () => {

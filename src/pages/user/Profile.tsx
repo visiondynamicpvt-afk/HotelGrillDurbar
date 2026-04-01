@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { api } from '../../lib/api';
-import { Button } from '../../components/UI/button';
-import { Card, CardContent, CardHeader, CardTitle } from '../../components/UI/card';
-import { Badge } from '../../components/UI/badge';
+import { Button } from '../../components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
+import { Badge } from '../../components/ui/badge';
 import { useNavigate } from 'react-router-dom';
-import GlassCard from '../../components/UI/GlassCard';
+import GlassCard from '../../components/ui/GlassCard';
 import Navigation from '../../components/Navigation';
 
 interface Booking {
