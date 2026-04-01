@@ -149,7 +149,7 @@ export const updateBookingStatus = async (req: Request, res: Response): Promise<
     // Send notification for approved bookings
     if (status === 'Approved') {
       try {
-        await notifyGuestBookingConfirmed(updatedBooking);
+        await notifyGuestBookingConfirmed(updatedBooking as any);
       } catch (notifError) {
         console.error('Failed to send notification:', notifError);
       }
@@ -222,7 +222,7 @@ export const updatePaymentStatus = async (req: Request, res: Response): Promise<
     // Send notification for verified payments
     if (paymentStatus === 'Verified' && updatedBooking.bookingStatus === 'Approved') {
       try {
-        await notifyGuestBookingConfirmed(updatedBooking);
+        await notifyGuestBookingConfirmed(updatedBooking as any);
       } catch (notifError) {
         console.error('Failed to send notification:', notifError);
       }

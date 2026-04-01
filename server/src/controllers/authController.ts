@@ -6,7 +6,7 @@ import { AuthRequest } from '../middleware/auth.js';
 // Generate JWT Token
 const generateToken = (id: string, username: string, role: string): string => {
   return jwt.sign({ id, username, role }, process.env.JWT_SECRET || 'fallback-secret', {
-    expiresIn: process.env.JWT_EXPIRE || '7d',
+    expiresIn: (process.env.JWT_EXPIRE || '7d') as jwt.SignOptions['expiresIn'],
   });
 };
 
