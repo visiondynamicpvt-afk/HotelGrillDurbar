@@ -1,0 +1,184 @@
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { Users, Wifi, Wind, Bed, Table, DoorOpen, Droplets, Bell } from 'lucide-react';
+import GlassCard from '../UI/GlassCard';
+import SectionHeader from '../UI/SectionHeader';
+import AnimatedButton from '../UI/AnimatedButton';
+import RoomDetailsModal from '../UI/RoomDetailsModal';
+import { api, Room as DBRoom } from '@/lib/api';
+import room2Image from '@/images/Room 2.png';
+import room1Image from '@/images/Room 1.png';
+import room3Image from '@/images/Room3.png';
+
+const featureIcons: { [key: string]: React.ReactNode } = {
+  'WiFi': <Wifi size={20} />,
+  'Wi-Fi': <Wifi size={20} />,
+  'AC': <Wind size={20} />,
+  'Air Conditioning': <Wind size={20} />,
+  'Bed': <Bed size={20} />,
+  'Table': <Table size={20} />,
+  'Balcony': <DoorOpen size={20} />,
+  'Water': <Droplets size={20} />,
+  'Service': <Bell size={20} />,
+};
+
+const getIconForFeature = (featureName: string) => {
+  for (const [key, icon] of Object.entries(featureIcons)) {
+    if (featureName.includes(key)) {
+      return icon;
+    }
+  }
+  return <Bell size={20} />;
+};
+
+const roomImages = [room2Image, room1Image, room3Image];
+
+interface DisplayRoom extends DBRoom {
+  image?: string;
+  features: { name: string; icon: React.ReactNode }[];
+}
+
+const Rooms = () => {
+  const [rooms, setRooms] = useState<DisplayRoom[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedRoom, setSelectedRoom] = useState<DisplayRoom | null>(null);
+
+  useEffect(() => {
+    loadRooms();
+  }, []);
+
+  const loadRooms = async () => {
+    try {
+      const dbRooms = await api.getRooms();
+      const formattedRooms = dbRooms.map((room, index) => ({
+        ...room,
+        name: room.roomType,
+        capacity: room.maxOccupancy,
+        image: roomImages[index % roomImages.length],
+        features: (room.features || []).map((feature) => ({
+          name: feature,
+          icon: getIconForFeature(feature),
+        })),
+      }));
+      setRooms(formattedRooms);
+    } catch (error) {
+      console.error('Failed to load rooms:', error);
+      // Fallback to static rooms if API fails
+      const staticRooms = [
+        {
+          id: '1',
+          roomType: 'Deluxe Room',
+          name: 'Deluxe Room',
+          description: 'Spacious room with stunning jungle views, perfect for couples seeking romance and tranquility.',
+          pricePerPerson: 2000,
+          maxOccupancy: 2,
+          capacity: 2,
+          image: room2Image,
+          features: [
+            { name: 'Air Conditioning (AC)', icon: <Wind size={20} /> },
+            { name: 'Free High-Speed Wi-Fi', icon: <Wifi size={20} /> },
+            { name: 'Comfortable Bed', icon: <Bed size={20} /> },
+            { name: 'Table & Seating Area', icon: <Table size={20} /> },
+            { name: 'Separate Balcony', icon: <DoorOpen size={20} /> },
+            { name: 'Hot & Cold Water', icon: <Droplets size={20} /> },
+            { name: 'Room Service', icon: <Bell size={20} /> },
+          ],
+          isAvailable: true,
+        },
+      ] as unknown as DisplayRoom[];
+      setRooms(staticRooms);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <>
+      <section id="rooms" className="relative py-24 overflow-hidden scroll-mt-32">
+        {/* Background Elements */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-jade-bright/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+        
+        <div className="container mx-auto px-6 relative z-10">
+          <SectionHeader
+            subtitle="Accommodations"
+            title="Luxurious Rooms & Suites"
+            description="Each room is thoughtfully designed to provide comfort, elegance, and a connection to nature's beauty."
+          />
+          
+          {loading ? (
+            <div className="flex justify-center items-center py-12">
+              <div className="animate-spin">
+                <div className="w-12 h-12 border-4 border-jade-bright border-t-transparent rounded-full"></div>
+              </div>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {rooms.map((room, index) => (
+                <GlassCard key={room._id || room.id} delay={index * 0.1} className="p-0 overflow-hidden group">
+                  {/* Image */}
+                  <div className="relative h-64 overflow-hidden">
+                    <motion.img
+                      src={room.image}
+                      alt={room.name}
+                      className="w-full h-full object-cover"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.6 }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent" />
+                    
+                    {/* Price Badge */}
+                    <div className="absolute top-4 right-4 glass-card px-3 py-1.5">
+                      <span className="text-jade-bright font-semibold">NPR {room.pricePerPerson.toLocaleString()}</span>
+                      <span className="text-muted-foreground text-sm">/person</span>
+                    </div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Users size={16} className="text-jade-bright" />
+                      <span className="text-sm text-muted-foreground">{room.capacity} Guests</span>
+                    </div>
+                    
+                    <h3 className="font-display text-2xl text-pale-white mb-2">{room.name}</h3>
+                    <p className="text-muted-foreground text-sm mb-4 line-clamp-2">{room.description}</p>
+                    
+                    {/* Features */}
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {room.features.slice(0, 4).map((feature, idx) => (
+                        <span
+                          key={idx}
+                          className="inline-flex items-center gap-1.5 text-xs bg-jade-deep/30 text-jade-bright px-2 py-1 rounded-full"
+                        >
+                          {feature.icon}
+                          {feature.name}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    <AnimatedButton 
+                      variant="ghost" 
+                      className="w-full justify-center py-3"
+                      onClick={() => setSelectedRoom(room)}
+                    >
+                      View Details
+                    </AnimatedButton>
+                  </div>
+                </GlassCard>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      <AnimatePresence>
+        {selectedRoom && (
+          <RoomDetailsModal room={selectedRoom as any} onClose={() => setSelectedRoom(null)} />
+        )}
+      </AnimatePresence>
+    </>
+  );
+};
+
+export default Rooms;

@@ -1,0 +1,9 @@
+node_modules/
+dist/
+uploads/
+.env
+*.log
+.DS_Store
+*-adminsdk-*.json
+service-account*.json
+serviceAccountKey*.json
