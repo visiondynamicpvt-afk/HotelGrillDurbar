@@ -4,8 +4,8 @@ import {
   Music, Mountain, Shirt, Image
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import GlassCard from '../UI/GlassCard';
-import SectionHeader from '../UI/SectionHeader';
+import GlassCard from '../ui/GlassCard';
+import SectionHeader from '../ui/SectionHeader';
 import { api } from '@/lib/api';
 import barImage from '@/images/Bar.png';
 import safariImage from '@/images/Safari 2.png';

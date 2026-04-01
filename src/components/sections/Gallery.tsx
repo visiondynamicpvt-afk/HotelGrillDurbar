@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
-import SectionHeader from '../UI/SectionHeader';
+import SectionHeader from '../ui/SectionHeader';
 
 // Import all images
 import barImage from '@/images/Bar.png';

@@ -1,10 +1,10 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { Users, Wifi, Wind, Bed, Table, DoorOpen, Droplets, Bell } from 'lucide-react';
-import GlassCard from '../UI/GlassCard';
-import SectionHeader from '../UI/SectionHeader';
-import AnimatedButton from '../UI/AnimatedButton';
-import RoomDetailsModal from '../UI/RoomDetailsModal';
+import GlassCard from '../ui/GlassCard';
+import SectionHeader from '../ui/SectionHeader';
+import AnimatedButton from '../ui/AnimatedButton';
+import RoomDetailsModal from '../ui/RoomDetailsModal';
 import { api, Room as DBRoom } from '@/lib/api';
 import room2Image from '@/images/Room 2.png';
 import room1Image from '@/images/Room 1.png';

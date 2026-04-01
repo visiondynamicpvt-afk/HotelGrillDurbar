@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone, User, LogOut } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import AnimatedButton from './UI/AnimatedButton';
+import AnimatedButton from './ui/AnimatedButton';
 import { useAuth } from '../contexts/AuthContext';
 import logo from '@/images/Logo.jpeg';
 
