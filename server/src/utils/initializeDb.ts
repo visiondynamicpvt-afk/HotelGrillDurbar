@@ -1,6 +1,7 @@
 import Room from '../models/Room.js';
 import Content from '../models/Content.js';
 import Admin from '../models/Admin.js';
+import User from '../models/User.js';
 
 const ROOMS = [
   {
@@ -78,6 +79,16 @@ const CONTENT_SECTIONS = [
 
 export const initializeDatabase = async () => {
   try {
+    // Drop deprecated indexes
+    try {
+      await User.collection.dropIndex('firebaseUid_1');
+      console.log('âœ… Dropped deprecated firebaseUid index');
+    } catch (e: any) {
+      if (e.code !== 27) {
+        console.log('â„¹ï¸  No deprecated firebaseUid index found, or already dropped');
+      }
+    }
+
     // Initialize rooms
     const existingRooms = await Room.countDocuments();
     if (existingRooms === 0) {
