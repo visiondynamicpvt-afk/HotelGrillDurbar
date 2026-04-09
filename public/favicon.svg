@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Hotel Grill Durbar">
+  <defs>
+    <linearGradient id="fire" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff7a18" />
+      <stop offset="100%" stop-color="#c81d11" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#fff7f4" />
+  <circle cx="32" cy="32" r="22" fill="#fff" stroke="#8f1d16" stroke-width="3" />
+  <path d="M32 12c3 5 8 8 8 15 0 5-3 9-8 12-5-3-8-7-8-12 0-6 4-10 8-15Z" fill="url(#fire)"/>
+  <path d="M24 21c1 4 4 6 4 10 0 3-2 5-4 7-2-2-4-5-4-8 0-4 2-7 4-9Z" fill="#ff9b3d"/>
+  <path d="M40 21c1 4 4 6 4 10 0 3-2 5-4 7-2-2-4-5-4-8 0-4 2-7 4-9Z" fill="#ff9b3d"/>
+  <path d="M20 44h24" stroke="#8f1d16" stroke-width="3" stroke-linecap="round" />
+  <text x="32" y="54" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#8f1d16">HGD</text>
+</svg>

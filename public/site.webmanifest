@@ -1,0 +1,19 @@
+{
+  "name": "Hotel Grill Durbar",
+  "short_name": "HGD",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/logo.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ],
+  "theme_color": "#8f1d16",
+  "background_color": "#fff7f4",
+  "display": "standalone"
+}
