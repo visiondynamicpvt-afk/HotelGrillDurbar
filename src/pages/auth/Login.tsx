@@ -10,6 +10,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../..
 import { Alert, AlertDescription } from '../../components/ui/alert';
 import GlassCard from '../../components/ui/GlassCard';
 import AnimatedButton from '../../components/ui/AnimatedButton';
+import { useNoIndex } from '../../hooks/useNoIndex';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -19,6 +20,8 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
+
+  useNoIndex();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

@@ -8,6 +8,7 @@ import { toast } from 'sonner';
 import { Loader2, Lock, User, Shield } from 'lucide-react';
 import GlassCard from '@/components/ui/GlassCard';
 import { motion } from 'framer-motion';
+import { useNoIndex } from '@/hooks/useNoIndex';
 
 const AdminLogin = () => {
   const [username, setUsername] = useState('');
@@ -22,6 +23,8 @@ const AdminLogin = () => {
       navigate('/admin/dashboard');
     }
   }, [navigate]);
+
+  useNoIndex();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
