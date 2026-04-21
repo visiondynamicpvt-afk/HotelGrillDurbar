@@ -54,8 +54,9 @@ const Footer = () => {
             {/* Social Links */}
             <div className="flex gap-4">
               {[
-                { icon: <Facebook size={20} />, href: 'https://facebook.com/hotelgrilldurbar' },
-                { icon: <Music size={20} />, href: 'https://tiktok.com/hotelgrilldurbar' },
+                { icon: <Facebook size={20} />, href: 'https://www.facebook.com/share/1GVdoRFFF3/' },
+                { icon: <Music size={20} />, href: 'https://www.tiktok.com/@hotelgrilldurbar?_r=1&_t=ZS-95iYFwsxMe0' },
+                { icon: <Instagram size={20} />, href: 'https://www.instagram.com/hotelgrilldurbar?igsh=MXAwN2s0dHNuZzBsYw==' },
               ].map((social, index) => (
                 <motion.a
                   key={index}
