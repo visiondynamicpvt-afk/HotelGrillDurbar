@@ -17,30 +17,6 @@ export const checkRoomAvailability = async (
     // Get total available rooms (assuming 13 rooms total)
     const totalRooms = 13;
 
-    // For now, return mock data to test API connectivity
-    // TODO: Re-enable database queries when MongoDB is working
-    const bookedRooms = 0; // Mock: no rooms booked
-
-    const availableRooms = totalRooms - bookedRooms;
-
-    if (availableRooms >= numberOfRooms) {
-      return {
-        isAvailable: true,
-        availableRooms,
-        totalRooms,
-        message: `${availableRooms} rooms available`,
-      };
-    } else {
-      return {
-        isAvailable: false,
-        availableRooms,
-        totalRooms,
-        message: `Only ${availableRooms} rooms available. Requested: ${numberOfRooms}`,
-      };
-    }
-
-    // Original database query (commented out for now):
-    /*
     // Find all bookings that overlap with the requested dates
     const overlappingBookings = await Booking.find({
       bookingStatus: { $in: ['Approved', 'Payment Submitted'] },
@@ -75,7 +51,6 @@ export const checkRoomAvailability = async (
         message: `Only ${availableRooms} rooms available. Requested: ${numberOfRooms}`,
       };
     }
-    */
   } catch (error) {
     console.error('Error checking room availability:', error);
     // Return default available response on error
