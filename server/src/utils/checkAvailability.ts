@@ -14,8 +14,8 @@ export const checkRoomAvailability = async (
   numberOfRooms: number
 ): Promise<AvailabilityCheck> => {
   try {
-    // Get total available rooms (assuming 8 rooms total)
-    const totalRooms = 8;
+    // Get total available rooms (assuming 12 rooms total)
+    const totalRooms = 12;
 
     // For now, return mock data to test API connectivity
     // TODO: Re-enable database queries when MongoDB is working
@@ -81,8 +81,8 @@ export const checkRoomAvailability = async (
     // Return default available response on error
     return {
       isAvailable: true,
-      availableRooms: 8,
-      totalRooms: 8,
+      availableRooms: 12,
+      totalRooms: 12,
       message: 'Availability check temporarily unavailable',
     };
   }
