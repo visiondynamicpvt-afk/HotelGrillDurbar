@@ -25,11 +25,10 @@ const seedDatabase = async () => {
       console.log('ℹ️ Admin already exists');
     }
 
-    // Create default rooms if none exist
-    const roomCount = await Room.countDocuments();
+    // Clear existing rooms to update the setup
+    await Room.deleteMany({});
     
-    if (roomCount === 0) {
-      const rooms = await Room.insertMany([
+    const rooms = await Room.insertMany([
         {
           roomType: 'Premium Room',
           pricePerPerson: 3500,
@@ -83,9 +82,6 @@ const seedDatabase = async () => {
       ]);
 
       console.log(`✅ Created ${rooms.length} default rooms`);
-    } else {
-      console.log('ℹ️ Rooms already exist');
-    }
 
     // Create default content sections if none exist
     const contentCount = await Content.countDocuments();
