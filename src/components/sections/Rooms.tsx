@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { Users, Wifi, Wind, Bed, Table, DoorOpen, Droplets, Bell } from 'lucide-react';
+import { Users, Wifi, Wind, Bed, Table, DoorOpen, Droplets, Bell, Tv, Refrigerator, Bath, Utensils } from 'lucide-react';
 import GlassCard from '../ui/GlassCard';
 import SectionHeader from '../ui/SectionHeader';
 import AnimatedButton from '../ui/AnimatedButton';
@@ -20,11 +20,17 @@ const featureIcons: { [key: string]: React.ReactNode } = {
   'Balcony': <DoorOpen size={20} />,
   'Water': <Droplets size={20} />,
   'Service': <Bell size={20} />,
+  'TV': <Tv size={20} />,
+  'Fridge': <Refrigerator size={20} />,
+  'Bathroom': <Bath size={20} />,
+  'Dining': <Utensils size={20} />,
+  'Hall': <Users size={20} />,
 };
 
 const getIconForFeature = (featureName: string) => {
+  const lowercaseFeature = featureName.toLowerCase();
   for (const [key, icon] of Object.entries(featureIcons)) {
-    if (featureName.includes(key)) {
+    if (lowercaseFeature.includes(key.toLowerCase())) {
       return icon;
     }
   }
@@ -76,9 +82,11 @@ const Rooms = () => {
           image: roomImages[0],
           features: [
             { name: 'Air Conditioning (AC)', icon: <Wind size={20} /> },
-            { name: 'Free High-Speed Wi-Fi', icon: <Wifi size={20} /> },
-            { name: 'King Size Bed', icon: <Bed size={20} /> },
-            { name: 'Modern Amenities', icon: <Droplets size={20} /> },
+            { name: 'TV', icon: <Wifi size={20} /> },
+            { name: 'Fridge', icon: <Droplets size={20} /> },
+            { name: 'Personal Bathroom', icon: <DoorOpen size={20} /> },
+            { name: 'Personal Balcony', icon: <DoorOpen size={20} /> },
+            { name: 'Dining with snacks', icon: <Table size={20} /> },
           ],
           isAvailable: true,
         },
@@ -86,8 +94,8 @@ const Rooms = () => {
           id: '2',
           roomType: 'Deluxe Room',
           name: 'Deluxe Room',
-          description: 'Comfortable air-conditioned deluxe room perfect for couples seeking romance and tranquility. (6 units available).',
-          pricePerPerson: 2000,
+          description: 'Comfortable air-conditioned deluxe room perfect for couples seeking romance and tranquility. (8 units available).',
+          pricePerPerson: 2500,
           maxOccupancy: 2,
           capacity: 2,
           image: roomImages[1],
@@ -100,17 +108,21 @@ const Rooms = () => {
         },
         {
           id: '3',
-          roomType: 'Standard Room',
-          name: 'Standard Room',
-          description: 'Cozy non-AC standard room providing essential comforts for a relaxing stay. (2 units available).',
-          pricePerPerson: 1500,
-          maxOccupancy: 2,
-          capacity: 2,
-          image: roomImages[2],
+          roomType: 'Hall Room',
+          name: 'Hall Room',
+          description: 'Large Hall Room perfect for group stays, meetings, or family gatherings. (1 unit available).',
+          pricePerPerson: 5500,
+          maxOccupancy: 10,
+          capacity: 10,
+          image: roomImages[0], // Reuse first image
           features: [
-            { name: 'Fan/Non-AC', icon: <Wind size={20} /> },
-            { name: 'Free High-Speed Wi-Fi', icon: <Wifi size={20} /> },
-            { name: 'Comfortable Bed', icon: <Bed size={20} /> },
+            { name: 'Air Conditioning (AC)', icon: <Wind size={20} /> },
+            { name: 'TV', icon: <Wifi size={20} /> },
+            { name: 'Fridge', icon: <Droplets size={20} /> },
+            { name: 'Personal Bathroom', icon: <DoorOpen size={20} /> },
+            { name: 'Personal Balcony', icon: <DoorOpen size={20} /> },
+            { name: 'Group table dining with snacks', icon: <Table size={20} /> },
+            { name: 'Spacious Hall', icon: <DoorOpen size={20} /> },
           ],
           isAvailable: true,
         },
@@ -174,11 +186,11 @@ const Rooms = () => {
                     <p className="text-muted-foreground text-sm mb-4 line-clamp-2">{room.description}</p>
                     
                     {/* Features */}
-                    <div className="flex flex-wrap gap-2 mb-6">
+                    <div className="flex flex-col gap-2 mb-6">
                       {room.features.slice(0, 4).map((feature, idx) => (
                         <span
                           key={idx}
-                          className="inline-flex items-center gap-1.5 text-xs bg-jade-deep/30 text-jade-bright px-2 py-1 rounded-full"
+                          className="flex items-center gap-1.5 text-sm text-pale-white/80"
                         >
                           {feature.icon}
                           {feature.name}
