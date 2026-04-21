@@ -87,7 +87,7 @@ const Rooms = () => {
           roomType: 'Deluxe Room',
           name: 'Deluxe Room',
           description: 'Comfortable air-conditioned deluxe room perfect for couples seeking romance and tranquility. (6 units available).',
-          pricePerPerson: 2500,
+          pricePerPerson: 2000,
           maxOccupancy: 2,
           capacity: 2,
           image: roomImages[1],

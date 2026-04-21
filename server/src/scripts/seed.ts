@@ -49,7 +49,7 @@ const seedDatabase = async () => {
         },
         {
           roomType: 'Deluxe Room',
-          pricePerPerson: 2500,
+          pricePerPerson: 2000,
           features: [
             'Air Conditioning (AC)',
             'Free High-Speed Wi-Fi',
