@@ -72,8 +72,9 @@ const seedDatabase = async () => {
           features: [
             'Air Conditioning (AC)',
             'TV',
+            'Fridge',
             'Personal Bathroom',
-            'Balcony',
+            'Personal Balcony',
             'Group table dining with snacks',
             'Spacious Hall',
             'Free High-Speed Wi-Fi',
