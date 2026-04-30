@@ -252,14 +252,14 @@ const Gallery = () => {
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 onClick={() => setSelectedImage(image.id)}
                 className={`relative overflow-hidden rounded-2xl cursor-pointer group ${
-                  index === 0 ? 'md:col-span-2 md:row-span-2' : ''
+                  index === 0 ? 'row-span-2 md:col-span-2' : ''
                 }`}
               >
                 <motion.img
                   src={image.src}
                   alt={image.alt}
                   className={`w-full object-cover ${
-                    index === 0 ? 'h-full min-h-[400px]' : 'h-48 md:h-64'
+                    index === 0 ? 'h-full min-h-[400px] md:min-h-[400px]' : 'h-48 md:h-64'
                   }`}
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.6 }}
