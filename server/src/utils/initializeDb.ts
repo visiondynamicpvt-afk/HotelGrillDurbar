@@ -72,7 +72,7 @@ const CONTENT_SECTIONS = [
     title: 'Get in Touch',
     address: 'Sauraha, Chitwan, Nepal',
     phone: '+977 9845098450',
-    email: 'info@grilldurbar.com',
+    email: 'hotelgrilldurbar@gmail.com',
     hours: 'Open 24/7',
   },
 ];
