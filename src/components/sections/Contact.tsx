@@ -118,9 +118,11 @@ const Contact = () => {
           if (info.title === 'Phone' && response.content.phone) {
             return { ...info, value: response.content.phone };
           }
+<<<<
           if (info.title === 'Email' && response.content.email) {
-            return { ...info, value: response.content.email };
+            return { ...info, value: 'hotelgrilldurbar@gmail.com' };
           }
+====
           if (info.title === 'Location' && response.content.address) {
             return { ...info, value: response.content.address };
           }
