@@ -21,7 +21,7 @@ const Invoice = ({ booking }: InvoiceProps) => {
           <h1 className="text-4xl font-bold text-jade-700 tracking-tight">Hotel Grill Durbar</h1>
           <p className="text-gray-500 mt-2 font-medium">Sauraha, Chitwan, Nepal</p>
           <p className="text-gray-500 font-medium">Phone: 056-494295</p>
-          <p className="text-gray-500 font-medium">Email: info@grilldurbar.com</p>
+          <p className="text-gray-500 font-medium">Email: hotelgrilldurbar@gmail.com</p>
         </div>
         <div className="text-right">
           <h2 className="text-4xl font-black text-gray-800 uppercase tracking-widest mb-2">INVOICE</h2>

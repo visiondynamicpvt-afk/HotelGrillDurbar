@@ -33,8 +33,13 @@ const getCreatedAtDate = (value: any) => {
 const getPaymentProofLink = (paymentProof?: string) => {
   if (!paymentProof) return 'Not available';
   if (paymentProof.startsWith('data:')) return 'Uploaded (base64)';
-  const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:8080';
-  return `${frontendUrl}${paymentProof}`;
+
+  // Keep absolute URLs (e.g., Cloudinary) unchanged.
+  if (/^https?:\/\//i.test(paymentProof)) return paymentProof;
+
+  const frontendUrl = (process.env.FRONTEND_URL || 'http://localhost:8080').replace(/\/+$/, '');
+  const normalizedPath = paymentProof.startsWith('/') ? paymentProof : `/${paymentProof}`;
+  return `${frontendUrl}${normalizedPath}`;
 };
 
 // Email transporter with enhanced SMTP configuration

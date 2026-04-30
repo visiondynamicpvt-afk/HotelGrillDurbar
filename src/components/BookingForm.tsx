@@ -34,7 +34,7 @@ const bookingSchema = z.object({
   checkInDate: z.string().min(1, 'Check-in date is required'),
   checkOutDate: z.string().min(1, 'Check-out date is required'),
   numberOfGuests: z.number().min(1, 'At least 1 guest required').max(20, 'Maximum 20 guests'),
-  numberOfRooms: z.number().min(1, 'At least 1 room required').max(12, 'Maximum 12 rooms'),
+  numberOfRooms: z.number().min(1, 'At least 1 room required').max(13, 'Maximum 13 rooms'),
   specialRequests: z.string().optional(),
 }).refine((data) => {
   const checkIn = new Date(data.checkInDate);
